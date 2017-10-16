@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const simpleAuth = require('simple-oauth2');
 const randomString = require('crypto-random-string');
+const ejs = require('ejs');
+
 const {
   CLIENT_ID,
   CLIENT_SECRET,
@@ -54,6 +56,8 @@ const getMessageScript = (provider, state, content) => `
 `;
 
 const app = express();
+app.set('view engine', 'ejs');
+app.use(express.static('static'));
 
 app.get('/auth', (req, res) => {
   res.redirect(authURL);
@@ -83,7 +87,12 @@ app.get('/callback', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.redirect('/auth');
+  res.render('index', {
+    url: req.protocol + '://' + req.get('Host') + req.url.replace('/', ''),
+    provider: PROVIDER,
+    clientID: CLIENT_ID,
+    clientSecret: CLIENT_SECRET
+  });
 });
 
 app.listen(PORT);

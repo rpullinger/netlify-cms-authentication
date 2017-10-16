@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Netlify CMS authentication</title>
+    <link href="/style.css" rel="stylesheet">
+
+
+  </head>
+  <body class="wrapper">
+    <div class="box">
+      <h1 class="box__title">Netlify CMS authentication</h1>
+
+      <div>
+        <% if (!clientID || clientID === 'Change me!') { %><p class="error">Please update the <em>CLIENT_ID</em> environment variable.</p><% } %>
+        <% if (clientID === 'Change me!') { %><p class="error">Please update the <em>CLIENT_SECRET</em> environment variable.</p><% } %>
+      <div>
+
+      <dl>
+        <dt><strong>Base URL</strong></dt>
+        <dd>
+          <%= url %>
+          <small class="note">Add <code>base_url: <%= url %></code> to your <code>config.yml</code>.</small>
+        </dd>
+
+        <dt><strong>Callback URL</strong></dt>
+        <dd>
+          <%= url %>/callback
+          <small class="note">Use this as the callback URL on your providers oAuth app settings.</small>
+        </dd>
+
+        <dt><strong>Authentication URL</strong></dt>
+        <dd>
+          <%= url %>/auth
+          <small class="note">Netlify will automatically redirect here from the login screen once <code>base_url</code> is set.</small>
+        </dd>
+      </dl>
+    </div>
+  </body>
+</html>
