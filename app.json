@@ -12,5 +12,6 @@
       "description": "The client secret from your provider",
       "value": "Change me!",
     }
-  }
+  },
+  "success_url": "/"
 }
