@@ -1,0 +1,16 @@
+{
+  "name": "Netlify auth provider",
+  "description": "A 'roll your own' authentication provider for the Netlify CMS",
+  "repository": "https://github.com/rpullinger/netlify-cms-authentication",
+  "keywords": ["node", "express", "netlify", "oauth"],
+  "env": {
+    "CLIENT_ID": {
+      "description": "The client ID for your provider",
+      "value": "Change me!",
+    },
+    "CLIENT_SECRET": {
+      "description": "The client secret from your provider",
+      "value": "Change me!",
+    }
+  }
+}
